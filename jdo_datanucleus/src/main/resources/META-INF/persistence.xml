@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="MyPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.datanucleus.api.jdo.JDOPersistenceManagerFactory</provider>
+
+        <!-- 实体类 -->
+        <class>com.example.jdo.User</class>
+
+        <properties>
+            <!-- 数据库连接配置 -->
+            <property name="javax.jdo.option.ConnectionDriverName" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.jdo.option.ConnectionURL" value="jdbc:mysql://127.0.0.1:3306/jdo_test?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="root"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="MyNewPass!23"/>
+
+            <!-- DataNucleus 配置 -->
+            <property name="datanucleus.schema.autoCreateAll" value="true"/>
+            <property name="datanucleus.schema.validateTables" value="false"/>
+            <property name="datanucleus.schema.validateConstraints" value="false"/>
+
+            <!-- 日志配置 -->
+            <property name="datanucleus.ConnectionPoolingType" value="None"/>
+            <property name="datanucleus.logging.level" value="INFO"/>
+
+            <!-- 其他配置 -->
+            <property name="datanucleus.identifier.case" value="LowerCase"/>
+            <property name="datanucleus.storeManagerType" value="rdbms"/>
+        </properties>
+    </persistence-unit>
+</persistence>
